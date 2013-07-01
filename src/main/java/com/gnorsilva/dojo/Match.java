@@ -9,6 +9,7 @@ class Match {
 
     public interface MatchScoreBoard {
         void servingPlayer(Player player);
+        void updateScore(Player player, int score);
     }
 
     public Match(MatchScoreBoard matchScoreBoard) {
@@ -19,8 +20,10 @@ class Match {
         if (player == servingPlayer) {
             if (player == Player.ONE) {
                 playerOnePoints++;
+                matchScoreBoard.updateScore(player, playerOnePoints);
             } else {
                 playerTwoPoints++;
+                matchScoreBoard.updateScore(player, playerTwoPoints);
             }
         }
 
